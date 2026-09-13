@@ -1,0 +1,140 @@
+/* Mužíčci — lokální doplňky k site.css */
+
+.screen {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .04),
+    0 18px 50px rgba(0, 0, 0, .35);
+}
+
+.overlay {
+  background: radial-gradient(ellipse at 50% 40%, rgba(32, 26, 20, .82), rgba(8, 7, 6, .94));
+  backdrop-filter: blur(2px);
+}
+
+.overlay-title {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, .45);
+}
+
+.stat-row {
+  display: flex;
+  gap: 10px;
+}
+
+.stat.is-compact {
+  flex: 1;
+  min-width: 0;
+}
+
+.stat.is-compact .stat-value {
+  font-size: 22px;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.skill {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  background: var(--screen);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: var(--sans);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color .15s ease, background .15s ease, transform .12s ease;
+}
+
+.skill:hover:not(:disabled) {
+  border-color: var(--acc);
+  transform: translateY(-1px);
+}
+
+.skill[aria-pressed="true"] {
+  border-color: var(--acc);
+  background: #1a120e;
+  box-shadow: inset 0 0 0 1px rgba(255, 92, 51, .35);
+}
+
+.skill:disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+.skill-art {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, #1c1814, #0e1012);
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+}
+
+.skill-art svg {
+  display: block;
+}
+
+.skill-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.skill-name {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.skill-hint {
+  font-size: 11px;
+  color: var(--dim);
+  font-family: var(--mono);
+}
+
+.skill-count {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.skill[aria-pressed="true"] .skill-count {
+  color: var(--acc);
+}
+
+#screen {
+  cursor: crosshair;
+  image-rendering: auto;
+}
+
+@media (max-width: 860px) {
+  .skills {
+    flex: 1 1 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skill {
+    padding: 8px;
+  }
+
+  .skill-hint {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .overlay {
+    backdrop-filter: none;
+    background: rgba(10, 9, 8, .94);
+  }
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Herna — davidpolesny.cz</title>
+<meta name="description" content="Malé hry v prohlížeči od Davida Polesného. Had, Arkanoid, Krávy, Mužíčci a Pac-Man, bez instalace a bez přihlašování.">
+<meta name="theme-color" content="#0d0e10">
+<link rel="canonical" href="https://games.davidpolesny.cz/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="games.davidpolesny.cz">
+<meta property="og:title" content="Herna — davidpolesny.cz">
+<meta property="og:description" content="Malé hry v prohlížeči. Had, Arkanoid, Krávy, Mužíčci a Pac-Man, bez instalace a bez přihlašování.">
+<meta property="og:url" content="https://games.davidpolesny.cz/">
+<meta property="og:locale" content="cs_CZ">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<div class="card">
+
+  <header class="topbar">
+    <span class="brand"><span>games.</span>davidpolesny.cz</span>
+    <nav class="topnav">
+      <a href="#hry">Hry</a>
+      <a href="https://www.davidpolesny.cz/">Zpět na web</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-title">
+      <h1>Herna<span>.</span></h1>
+      <div class="kicker">MALÉ HRY V PROHLÍŽEČI</div>
+    </div>
+    <p class="lede">Pár klasik, co jsem si napsal pro radost. Nic se neinstaluje, nikam se nepřihlašuje, nic se nesbírá. Katalog postupně roste.</p>
+  </section>
+
+  <section id="hry" class="catalog">
+
+    <article class="game-row">
+      <div class="game-num">01</div>
+      <div class="game-body">
+        <span class="game-name">Had</span>
+        <span class="game-desc">Klasický snake na mřížce 20 × 15. Sbírej, rosť, nenaraz do sebe ani do zdi.</span>
+        <span class="game-meta" data-best="had" hidden></span>
+      </div>
+      <div class="game-action"><a class="btn" href="/hry/had/">Hrát ↗</a></div>
+    </article>
+
+    <article class="game-row">
+      <div class="game-num">02</div>
+      <div class="game-body">
+        <span class="game-name">Arkanoid</span>
+        <span class="game-desc">Odpal míček pálkou a rozbij všechny cihly. Každé kolo je o kus rychlejší.</span>
+        <span class="game-meta" data-best="arkanoid" hidden></span>
+      </div>
+      <div class="game-action"><a class="btn" href="/hry/arkanoid/">Hrát ↗</a></div>
+    </article>
+
+    <article class="game-row">
+      <div class="game-num">03</div>
+      <div class="game-body">
+        <span class="game-name">Krávy</span>
+        <span class="game-desc">Karetní 6 bere! pro 2 až 10 hráčů. Založ místnost a pozvi ostatní kódem, nebo hraj proti botům.</span>
+        <span class="game-meta">MULTIPLAYER · VLASTNÍ APLIKACE</span>
+      </div>
+      <div class="game-action"><a class="btn" href="https://kravy.davidpolesny.cz/">Hrát ↗</a></div>
+    </article>
+
+    <article class="game-row">
+      <div class="game-num">04</div>
+      <div class="game-body">
+        <span class="game-name">Mužíčci</span>
+        <span class="game-desc">Puzzle inspirované Lemmings. Přiřaď schopnosti, prokopej cestu a zachraň mužíčky.</span>
+        <span class="game-meta" data-best="muzici" hidden></span>
+      </div>
+      <div class="game-action"><a class="btn" href="/hry/muzici/">Hrát ↗</a></div>
+    </article>
+
+    <article class="game-row">
+      <div class="game-num">05</div>
+      <div class="game-body">
+        <span class="game-name">Pac-Man</span>
+        <span class="game-desc">Sněz tečky, vyhni se duchům. Energizer tě na chvíli otočí v lovce.</span>
+        <span class="game-meta" data-best="pacman" hidden></span>
+      </div>
+      <div class="game-action"><a class="btn" href="/hry/pacman/">Hrát ↗</a></div>
+    </article>
+
+    <article class="game-row is-empty">
+      <div class="game-num">06</div>
+      <div class="game-body">
+        <span class="game-name">Místo pro další hru</span>
+        <span class="game-desc">Nová hra = jedna složka a jeden řádek v tomhle katalogu.</span>
+      </div>
+      <div class="game-action"><span class="tag">Brzy</span></div>
+    </article>
+
+  </section>
+
+  <footer class="foot">
+    <span>© 2026 David Polesný · NoReason s.r.o.</span>
+    <span>Rekordy se ukládají jen ve tvém prohlížeči.</span>
+  </footer>
+
+</div>
+
+<script>
+/* Rekordy v katalogu — jen když v tomhle prohlížeči nějaké jsou. */
+(function () {
+  var rows = document.querySelectorAll('[data-best]');
+  for (var i = 0; i < rows.length; i++) {
+    var slug = rows[i].getAttribute('data-best');
+    var best = 0;
+    try { best = parseInt(localStorage.getItem('dp-games:' + slug + ':best'), 10) || 0; } catch (e) {}
+    if (best > 0) {
+      rows[i].textContent = 'TVŮJ REKORD ' + String(best).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+      rows[i].hidden = false;
+    }
+  }
+})();
+</script>
+<script src="https://stats.davidpolesny.cz/beacon.js" defer></script>
+</body>
+</html>

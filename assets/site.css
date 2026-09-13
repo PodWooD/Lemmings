@@ -1,0 +1,381 @@
+/* games.davidpolesny.cz — sdílený design
+   Vychází z davidpolesny.cz: stejné barvy, písma, rádiusy a karta. */
+
+:root {
+  --bg: #0d0e10;
+  --panel: #121316;
+  --screen: #08090b;
+  --line: #26272c;
+  --line-soft: #1d1e22;
+  --line-dash: #34353b;
+  --text: #ececec;
+  --body: #b9bac1;
+  --muted: #8a8b92;
+  --dim: #5a5b62;
+  --acc: #ff5c33;
+  --acc-hover: #ff8a66;
+  --acc-ink: #1a0d08;
+  --radius: 12px;
+  --sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+a { color: var(--acc); text-decoration: none; }
+a:hover { color: var(--acc-hover); }
+::selection { background: var(--acc); color: var(--acc-ink); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+.card {
+  width: 100%;
+  max-width: 1060px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0 64px 56px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .5);
+}
+
+/* --- hlavička --- */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  color: var(--muted);
+  gap: 16px;
+}
+
+.brand { color: var(--text); font-weight: 700; }
+.brand span { color: var(--acc); }
+
+.topnav { display: flex; gap: 26px; align-items: center; }
+.topnav a { color: var(--muted); }
+.topnav a:hover { color: var(--text); }
+
+/* --- hero --- */
+
+.hero { padding: 70px 0 46px; animation: fadeUp .6s ease both; }
+
+.hero-title {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.hero h1 {
+  font-size: 92px;
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -3px;
+  margin: 0;
+}
+.hero h1 span { color: var(--acc); }
+
+.kicker {
+  color: var(--acc);
+  font-size: 15px;
+  letter-spacing: 3px;
+  margin-top: -9px;
+  font-family: var(--mono);
+  line-height: 1;
+}
+
+.lede {
+  max-width: 620px;
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--body);
+  margin: 34px 0 0;
+}
+
+/* --- katalog her --- */
+
+.catalog {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  animation: fadeUp .6s .15s ease both;
+}
+
+.game-row {
+  display: grid;
+  grid-template-columns: 70px 1fr auto;
+  column-gap: 32px;
+  align-items: center;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.game-num {
+  color: var(--acc);
+  font-family: var(--mono);
+  font-size: 16px;
+}
+
+.game-body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.game-name { font-weight: 600; font-size: 22px; color: var(--text); }
+.game-desc { color: var(--muted); font-size: 15px; line-height: 1.6; }
+
+.game-meta {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--dim);
+  margin-top: 2px;
+}
+.game-meta[hidden] { display: none; }
+
+.game-action { display: flex; justify-content: flex-end; }
+
+.btn {
+  display: inline-block;
+  border: 1px solid var(--acc);
+  color: var(--acc);
+  padding: 11px 26px;
+  border-radius: 100px;
+  font-size: 15px;
+  font-family: var(--sans);
+  background: none;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+  white-space: nowrap;
+}
+.btn:hover { background: var(--acc); color: var(--acc-ink); }
+
+.btn-solid { background: var(--acc); color: var(--acc-ink); font-weight: 600; }
+.btn-solid:hover { background: var(--acc-hover); border-color: var(--acc-hover); color: var(--acc-ink); }
+
+.btn-quiet { border-color: var(--line-dash); color: var(--muted); }
+.btn-quiet:hover { background: none; border-color: var(--muted); color: var(--text); }
+
+.game-row.is-empty .game-num { color: var(--line-dash); }
+.game-row.is-empty .game-name { color: var(--dim); }
+.game-row.is-empty .game-desc { color: var(--dim); }
+
+.tag {
+  border: 1px solid var(--line-dash);
+  color: var(--dim);
+  padding: 9px 22px;
+  border-radius: 100px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* --- pata --- */
+
+.foot {
+  margin-top: 40px;
+  font-size: 12px;
+  color: var(--dim);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* --- herní stránka --- */
+
+.game-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.back:hover { color: var(--text); }
+.back svg { flex: none; }
+
+.game-title { font-size: 20px; font-weight: 700; color: var(--text); }
+
+.stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 28px;
+  padding: 32px 0 0;
+  align-items: start;
+  animation: fadeUp .6s ease both;
+}
+
+.screen {
+  position: relative;
+  background: var(--screen);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.screen canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgba(8, 9, 11, .88);
+  text-align: center;
+  padding: 24px;
+}
+.overlay[hidden] { display: none; }
+
+.overlay-title {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+.overlay-title span { color: var(--acc); }
+
+.overlay-sub {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 1px;
+  line-height: 1.7;
+}
+
+.side { display: flex; flex-direction: column; gap: 16px; }
+
+.stat {
+  background: var(--screen);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stat-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--muted);
+}
+
+.stat-value {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--acc);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-value.is-small { font-size: 26px; color: var(--text); }
+
+.keys {
+  background: var(--screen);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.keys-list { display: flex; flex-direction: column; gap: 10px; }
+
+.keys-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--body);
+}
+.keys-row b { font-family: var(--mono); font-weight: 400; color: var(--muted); }
+
+.side-actions { display: flex; flex-direction: column; gap: 10px; }
+.side-actions .btn { text-align: center; }
+
+/* dotykové ovládání — jen na malých displejích */
+.dpad { display: none; }
+
+/* --- responzivita --- */
+
+@media (max-width: 900px) {
+  .stage { grid-template-columns: minmax(0, 1fr); }
+  .side { flex-direction: row; flex-wrap: wrap; }
+  .stat { flex: 1 1 140px; }
+  .keys { flex: 1 1 100%; }
+  .side-actions { flex: 1 1 100%; flex-direction: row; }
+  .side-actions .btn { flex: 1; }
+}
+
+@media (max-width: 820px) {
+  .card { padding: 0 28px 44px; }
+  .hero h1 { font-size: 64px; letter-spacing: -2px; }
+}
+
+@media (max-width: 620px) {
+  .game-row { grid-template-columns: 44px 1fr; row-gap: 14px; column-gap: 16px; }
+  .game-action { grid-column: 2; justify-content: flex-start; }
+  .keys { display: none; }
+  .dpad {
+    display: grid;
+    grid-template-columns: repeat(3, 64px);
+    grid-template-rows: repeat(2, 64px);
+    gap: 8px;
+    justify-content: center;
+    flex: 1 1 100%;
+  }
+  .dpad button {
+    background: var(--screen);
+    border: 1px solid var(--line-dash);
+    border-radius: 10px;
+    color: var(--muted);
+    font-size: 20px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .dpad button:active { background: var(--acc); color: var(--acc-ink); border-color: var(--acc); }
+  .dpad .up { grid-column: 2; grid-row: 1; }
+  .dpad .left { grid-column: 1; grid-row: 2; }
+  .dpad .down { grid-column: 2; grid-row: 2; }
+  .dpad .right { grid-column: 3; grid-row: 2; }
+}
+
+@media (max-width: 520px) {
+  body { padding: 20px 12px; }
+  .card { padding: 0 20px 36px; }
+  .hero { padding: 48px 0 36px; }
+  .hero h1 { font-size: 44px; letter-spacing: -1.5px; }
+  .lede { font-size: 17px; }
+  .topnav { gap: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

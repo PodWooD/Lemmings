@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arkanoid — Herna davidpolesny.cz</title>
+<meta name="description" content="Arkanoid (breakout) v prohlížeči. Odpal míček pálkou a rozbij všechny cihly.">
+<meta name="theme-color" content="#0d0e10">
+<link rel="canonical" href="https://games.davidpolesny.cz/hry/arkanoid/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<div class="card">
+
+  <header class="game-head">
+    <a class="back" href="/">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+      Katalog
+    </a>
+    <span class="game-title">Arkanoid</span>
+  </header>
+
+  <div class="stage">
+
+    <div class="screen">
+      <canvas id="screen" width="640" height="480" aria-label="Hrací plocha hry Arkanoid"></canvas>
+      <div class="overlay" id="overlay">
+        <div class="overlay-title" data-overlay-title></div>
+        <div class="overlay-sub" data-overlay-sub></div>
+      </div>
+    </div>
+
+    <div class="side">
+
+      <div class="stat">
+        <span class="stat-label">SKÓRE</span>
+        <span class="stat-value" id="score">0</span>
+      </div>
+
+      <div class="stat">
+        <span class="stat-label">TVŮJ REKORD</span>
+        <span class="stat-value is-small" id="best">—</span>
+      </div>
+
+      <div class="stat">
+        <span class="stat-label">ŽIVOTY</span>
+        <span class="stat-value is-small" id="lives">3</span>
+      </div>
+
+      <div class="keys">
+        <span class="stat-label">OVLÁDÁNÍ</span>
+        <div class="keys-list">
+          <span class="keys-row"><span>Pálka</span><b>MYŠ / ← →</b></span>
+          <span class="keys-row"><span>Vypustit míček</span><b>MEZERNÍK</b></span>
+          <span class="keys-row"><span>Pauza</span><b>MEZERNÍK</b></span>
+          <span class="keys-row"><span>Znovu</span><b>R</b></span>
+        </div>
+      </div>
+
+      <div class="dpad" id="dpad">
+        <button class="up" type="button" data-dir="up" aria-label="Vypustit míček">↑</button>
+        <button class="left" type="button" data-dir="left" aria-label="Doleva">←</button>
+        <button class="right" type="button" data-dir="right" aria-label="Doprava">→</button>
+      </div>
+
+      <div class="side-actions">
+        <button class="btn btn-solid" type="button" id="btn-new">Nová hra</button>
+        <a class="btn btn-quiet" href="/hry/muzici/">Mužíčci ↗</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span>© 2026 David Polesný · NoReason s.r.o.</span>
+    <span>Rekord se ukládá jen ve tvém prohlížeči.</span>
+  </footer>
+
+</div>
+
+<script src="/assets/arcade.js"></script>
+<script src="arkanoid.js"></script>
+</body>
+</html>
